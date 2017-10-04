@@ -1,6 +1,5 @@
 import React from 'react'
 import MapGL from 'react-map-gl'
-import Marker from './markers/home'
 
 const token = process.env.REACT_APP_MAPBOX_KEY
 
@@ -64,7 +63,6 @@ class Map extends React.Component {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         onViewportChange={this._onViewportChange}
         mapboxApiAccessToken={token} >
-        <Marker></Marker>
       </MapGL>
     );
   }
