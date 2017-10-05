@@ -1,10 +1,13 @@
 import React from 'react'
 import MapGL from 'react-map-gl'
+import { fromJS } from 'immutable'
+import { defaultMapStyle, data, dataLayer } from './map-style'
 
 const token = process.env.REACT_APP_MAPBOX_KEY
 
 class Map extends React.Component {
   state = {
+    mapStyle: defaultMapStyle,
     viewport: {
       latitude: 37.7537077,
       longitude: -122.4873976,
@@ -30,6 +33,14 @@ class Map extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this._resize);
     this._resize();
+
+    const mapStyle = defaultMapStyle
+    // Add geojson source to map
+    .setIn(['sources', 'booga'], fromJS({type: 'geojson', data}))
+    // Add point layer to map
+    .set('layers', defaultMapStyle.get('layers').push(dataLayer))
+    setTimeout(() => this.setState({data, mapStyle}), 1000)
+    
   }
 
   componentWillUnmount() {
@@ -54,13 +65,13 @@ class Map extends React.Component {
 
   render() {
 
-    const {viewport, settings} = this.state;
+    const {viewport, settings, mapStyle} = this.state;
 
     return (
       <MapGL
         {...viewport}
         {...settings}
-        mapStyle="mapbox://styles/mapbox/streets-v9"
+        mapStyle={mapStyle}
         onViewportChange={this._onViewportChange}
         mapboxApiAccessToken={token} >
       </MapGL>
