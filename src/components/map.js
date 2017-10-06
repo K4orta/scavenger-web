@@ -2,6 +2,7 @@ import React from 'react'
 import MapGL from 'react-map-gl'
 import { fromJS } from 'immutable'
 import { defaultMapStyle, data, dataLayer } from './map-style'
+import Count from './markers/count'
 
 const token = process.env.REACT_APP_MAPBOX_KEY
 
@@ -11,9 +12,8 @@ class Map extends React.Component {
     viewport: {
       latitude: 37.7537077,
       longitude: -122.4873976,
-      zoom: 18,
+      zoom: 15,
       bearing: -3,
-      pitch: 50,
       width: 500,
       height: 500
     },
@@ -21,12 +21,9 @@ class Map extends React.Component {
       dragPan: true,
       dragRotate: true,
       scrollZoom: true,
-      touchZoomRotate: true,
       doubleClickZoom: true,
       minZoom: 14,
-      maxZoom: 20,
-      minPitch: 0,
-      maxPitch: 85
+      maxZoom: 20
     }
   }
 
@@ -39,7 +36,7 @@ class Map extends React.Component {
     .setIn(['sources', 'booga'], fromJS({type: 'geojson', data}))
     // Add point layer to map
     .set('layers', defaultMapStyle.get('layers').push(dataLayer))
-    setTimeout(() => this.setState({data, mapStyle}), 1000)
+    setTimeout(() => this.setState({data, mapStyle}), 2000)
     
   }
 
@@ -73,7 +70,11 @@ class Map extends React.Component {
         {...settings}
         mapStyle={mapStyle}
         onViewportChange={this._onViewportChange}
-        mapboxApiAccessToken={token} >
+        mapboxApiAccessToken={token} >,
+        
+        <Count lat={37.75419228778779} lng={-122.48929738998413} count={1} max={5} />
+        <Count lat={37.754370424235226} lng={-122.48445868492126} count={1} max={5} />
+        <Count lat={37.75452311227736} lng={-122.48071432113647} count={1} max={5} />
       </MapGL>
     );
   }

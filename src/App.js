@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styled from 'emotion/react'
+import styled from 'react-emotion'
 import { post } from 'axios'
 import ItemList from './components/list'
 import Map from './components/map'
