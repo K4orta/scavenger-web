@@ -5,7 +5,7 @@ import styled from 'react-emotion'
 const PlayerStyle = styled('div')`
   width: 10px;
   height: 10px;
-  background: 4286f4;
+  background: #4286f4;
   border-radius: 50%;
 `
 
