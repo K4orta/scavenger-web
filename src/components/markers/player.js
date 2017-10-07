@@ -1,6 +1,6 @@
 import React from 'react'
 import { Marker } from 'react-map-gl'
-import styled from 'emotion/react'
+import styled from 'react-emotion'
 
 const PlayerStyle = styled('div')`
   width: 10px;
@@ -10,7 +10,7 @@ const PlayerStyle = styled('div')`
 `
 
 export default (props) => (
-  <Marker {...props}>
+  <Marker {...props} offsetLeft={-5} offsetTop={-5}>
     <PlayerStyle />
   </Marker>
 )

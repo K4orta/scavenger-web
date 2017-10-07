@@ -3,7 +3,7 @@ import MapGL from 'react-map-gl'
 import { fromJS } from 'immutable'
 import { defaultMapStyle, data, dataLayer } from './map-style'
 import Count from './markers/count'
-import Player from './markers/count'
+import Player from './markers/player'
 
 const token = process.env.REACT_APP_MAPBOX_KEY
 
