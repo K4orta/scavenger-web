@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
+import { inject, observer } from 'mobx-react'
+import ListItem from './list-item'
 
 const ListStyle = styled('div')`
   background: #777;
@@ -12,10 +14,6 @@ const ListStyle = styled('div')`
   transform: translate3d(100%, 0, 0);
   transition: transform .3s ease-in;
 
-  & li {
-    height: 10rem;
-  }
-
   &.is-open {
     transform: translate3d(0, 0, 0);
     transition: transform .3s ease-out;
@@ -24,29 +22,17 @@ const ListStyle = styled('div')`
 
 class ItemList extends React.Component {
   render() {
-
+    const items = this.props.itemStore.items.map(i =>
+      <ListItem key={i.id} {...i} />
+    )
     return (
       <ListStyle className={this.props.open ? 'is-open' : ''}>
         <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
+          {items}
         </ul>
       </ListStyle>
     )
   }
 }
 
-export default ItemList
+export default inject('itemStore')(observer(ItemList))

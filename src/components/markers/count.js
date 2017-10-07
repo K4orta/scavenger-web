@@ -11,7 +11,7 @@ const Counter = styled('div')`
 export default ({lat, lng, count, max}) => (
   <Marker latitude={lat} longitude={lng} offsetLeft={-70} offsetTop={-30}>
     <Counter>
-      {count} of 5 items found
+      {count} of {max} items found
     </Counter>
   </Marker>
 )

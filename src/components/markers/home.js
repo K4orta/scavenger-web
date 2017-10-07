@@ -1,6 +1,6 @@
 import React from 'react'
 import { Marker } from 'react-map-gl'
-import styled from 'emotion/react'
+import styled from 'emotion-react'
 
 const HomeStyle = styled('div')`
   background: url('/icons/home.svg');
