@@ -66,9 +66,11 @@ class App extends Component {
       localStorage.setItem('phone', query.from)
       this.props.userStore.phone = query.from
     }
-    this.props.itemStore.fetchTries(this.props.userStore.phone)
+    this.props.itemStore.fetchTries(localStorage.getItem('phone'))
     this.timerId = setInterval(() => {
-      this.props.itemStore.fetchTries(this.props.userStore.phone)
+      if (localStorage.getItem('phone')) {
+        this.props.itemStore.fetchTries(localStorage.getItem('phone'))
+      }
     }, 30000)
   }
   toggleMenu = (e) => {
@@ -88,11 +90,7 @@ class App extends Component {
       menuOpen: !this.state.menuOpen,
     })
     if (!this.state.menuOpen) {
-      this.props.itemStore.fetchTries(this.props.userStore.phone)
-      
-      this.props.history.replace({ search: '?menu-open' })
-    } else {
-      this.props.history.replace({ search: '' })
+      this.props.itemStore.fetchTries(localStorage.getItem('phone'))
     }
   }
   updateGps = (e) => {
