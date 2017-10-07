@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import styled from 'react-emotion'
 import { inject, observer } from 'mobx-react'
 import { post } from 'axios'
+import { parse } from 'query-string'
+import { withRouter } from 'react-router-dom'
 import ItemList from '../../components/list'
-import Signup from '../../components/signup'
 import Map from '../../components/map'
 import '../../App.css'
 
@@ -74,7 +75,12 @@ class App extends Component {
     menuOpen: false
   }
   componentDidMount() {
-    this.props.userStore.fetch()
+    const query = parse(this.props.location.search)
+    if (query.from) {
+      localStorage.setItem('phone', query.from)
+      this.props.userStore.phone = query.from
+    }
+    
   }
   toggleMenu = (e) => {
     navigator.geolocation.getCurrentPosition((s) => {
@@ -118,10 +124,9 @@ class App extends Component {
           </Button>
         </UIContainer>
         <ItemList open={this.state.menuOpen}/>
-        <Signup />
       </div>
     );
   }
 }
 
-export default inject('userStore')(observer(App));
+export default inject('userStore', 'itemStore')(observer(withRouter(App)));

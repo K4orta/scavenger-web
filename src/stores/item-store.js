@@ -1,4 +1,4 @@
-import { extendObservable, action } from 'mobx'
+import { extendObservable } from 'mobx'
 import items from '../data/items'
 
 class ItemStore {
@@ -14,7 +14,7 @@ class ItemStore {
           out[i.group] += 1
         })
         return out
-      }
+      },
     })
   }
 }

@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 import ListItem from './list-item'
 
 const ListStyle = styled('div')`
-  background: #777;
+  background: white;
   overflow: auto;
   width: 100%;
   height: 100%;
@@ -17,6 +17,11 @@ const ListStyle = styled('div')`
   &.is-open {
     transform: translate3d(0, 0, 0);
     transition: transform .3s ease-out;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 1rem;
   }
 `
 
