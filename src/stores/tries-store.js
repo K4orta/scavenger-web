@@ -6,7 +6,10 @@ class TriesStore {
     extendObservable(this, {
       tries: [],
       fetch: action((options) => {
-        get(`${process.env.REACT_APP_API_PATH}/tries`).then(action(console.log))
+        return get(`${process.env.REACT_APP_API_PATH}/tries`)
+          .then(action((resp) => {
+            return resp.data
+          })).catch(console.log)
       })
     })
   }

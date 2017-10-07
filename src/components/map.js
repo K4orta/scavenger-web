@@ -61,9 +61,28 @@ class Map extends React.Component {
   });
 
   render() {
-
+    const { itemTotals, found } = this.props
     const {viewport, settings, mapStyle} = this.state;
-
+    const zones = [
+      {
+        lat: 37.75419228778779,
+        lng: -122.48929738998413,
+        id: 1
+      },
+      {
+        lat: 37.754370424235226,
+        lng: -122.48445868492126,
+        id: 2
+      },
+      {
+        lat: 37.75452311227736,
+        lng: -122.48071432113647,
+        id: 3
+      }
+    ]
+    const renderedZones = zones.map(z =>
+      <Count key={z.id} lat={z.lat} lng={z.lng} count={found[z.id]} max={itemTotals[z.id]} />
+    )
     return (
       <MapGL
         {...viewport}
@@ -72,9 +91,7 @@ class Map extends React.Component {
         onViewportChange={this._onViewportChange}
         mapboxApiAccessToken={token} >,
         
-        <Count lat={37.75419228778779} lng={-122.48929738998413} count={1} max={5} />
-        <Count lat={37.754370424235226} lng={-122.48445868492126} count={1} max={5} />
-        <Count lat={37.75452311227736} lng={-122.48071432113647} count={1} max={5} />
+        {renderedZones}
       </MapGL>
     );
   }

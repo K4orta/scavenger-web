@@ -3,72 +3,92 @@
     "id": 1,
     "slug": "chair",
     "title": "Ugly Chair",
-    "group": 3
+    "group": 3,
+    "found": false
   },
   {
     "id": 2,
     "slug": "beer",
     "title": "Beer sign",
-    "group": 1
+    "group": 3,
+    "found": false
   },
   {
     "id": 3,
     "title": "Boat plaque",
-    "group": 1
+    "group": 1,
+    "found": false
   },
   {
     "id": 4,
     "title": "Cartoon Duck",
-    "group": 1
+    "group": 1,
+    "found": false
   },
   {
     "id": 5,
     "title": "Street Car",
-    "group": 3
+    "group": 3,
+    "found": false
   },
   {
     "id": 6,
     "title": "Bank that Patty Hearst Robbed in 1974",
-    "group": 3
+    "group": 3,
+    "found": false
   },
   {
     "id": 7,
     "title": "A pay phone",
-    "group": 2
+    "group": 3,
+    "found": false
   },
   {
     "id": 8,
     "title": "Cartoon thing",
-    "group": 1
+    "group": 1,
+    "found": false
   },
   {
     "id": 9,
     "title": "Chef",
-    "group": 1
+    "group": 1,
+    "found": false
   },
   {
     "id": 10,
     "title": "SF sign",
-    "group": 1
+    "group": 1,
+    "found": false
   },
   {
     "id": 11,
     "title": "AA sign",
-    "group": 3
+    "group": 3,
+    "found": false
   },
   {
     "id": 12,
-    "title": "Air pump",
-    "group": 3
+    "title": "Tire",
+    "group": 3,
+    "found": false
   },
   {
     "id": 13,
     "title": "Lion",
-    "group": 1
+    "group": 1,
+    "found": false
   },
   {
     "id": 14,
     "title": "Carlsberg Beer Sign",
-    "group": 1
+    "group": 1,
+    "found": false
+  },
+  {
+    "id": 15,
+    "title": "Music School",
+    "group": 2,
+    "found": false
   }
 ]
