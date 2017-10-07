@@ -95,7 +95,7 @@ class App extends Component {
       this.props.history.replace({ search: '' })
     }
   }
-  updateGps() {
+  updateGps = (e) => {
     navigator.geolocation.getCurrentPosition((s) => {
       this.props.userStore.updateLocation(s.coords.latitude, s.coords.longitude);
     }, null, {
