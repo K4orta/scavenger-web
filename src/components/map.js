@@ -92,8 +92,8 @@ class Map extends React.Component {
         mapStyle={mapStyle}
         onViewportChange={this._onViewportChange}
         mapboxApiAccessToken={token} >,
-        
         {renderedZones}
+        {player}
       </MapGL>
     );
   }
