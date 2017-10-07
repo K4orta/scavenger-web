@@ -3,6 +3,7 @@ import MapGL from 'react-map-gl'
 import { fromJS } from 'immutable'
 import { defaultMapStyle, data, dataLayer } from './map-style'
 import Count from './markers/count'
+import Player from './markers/count'
 
 const token = process.env.REACT_APP_MAPBOX_KEY
 
@@ -83,6 +84,7 @@ class Map extends React.Component {
     const renderedZones = zones.map(z =>
       <Count key={z.id} lat={z.lat} lng={z.lng} count={found[z.id]} max={itemTotals[z.id]} />
     )
+    const player = this.props.gps ? <Player latitude={this.props.gps.lat} longitude={this.props.gps.lng} /> : null
     return (
       <MapGL
         {...viewport}

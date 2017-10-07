@@ -14,8 +14,19 @@ const UIContainer = styled('div')`
     position: absolute;
     z-index: 10;
     right: 1rem;
-    bottom: 1rem;
+    bottom: 2rem;
   }
+`
+
+const Instructions = styled('div')`
+  position: absolute;
+  z-index: 20;
+  right: 0;
+  left: 0;
+  background: white;
+  bottom: 0;
+  text-align: center;
+  padding: .5rem 0;
 `
 
 const Button = styled('button')`
@@ -84,6 +95,13 @@ class App extends Component {
       this.props.history.replace({ search: '' })
     }
   }
+  updateGps() {
+    navigator.geolocation.getCurrentPosition((s) => {
+      this.props.userStore.updateLocation(s.coords.latitude, s.coords.longitude);
+    }, null, {
+      enableHighAccuracy: true
+    })
+  }
   photoUpload(e) {
     e.preventDefault();
     if (e.target.files.length > 0) {
@@ -102,13 +120,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Map itemTotals={this.props.itemStore.groupCounts()} found={this.props.itemStore.foundInGroup}></Map>
+        <Map
+          itemTotals={this.props.itemStore.groupCounts()}
+          found={this.props.itemStore.foundInGroup}>
+          gps={this.props.userStore.location}
+        </Map>
         <UIContainer>
+          <Button onClick={this.updateGps}>
+            <img src="/icons/gps.svg" alt=""/>
+          </Button>
           <Button onClick={this.toggleMenu}>
             <img src="/icons/list.svg" alt=""/>
           </Button>
         </UIContainer>
         <ItemList open={this.state.menuOpen}/>
+        <Instructions>Text pictures to <a href="sms:14153013770">415-301-3770</a></Instructions>
       </div>
     );
   }
