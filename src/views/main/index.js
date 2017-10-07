@@ -126,9 +126,6 @@ class App extends Component {
           gps={this.props.userStore.location}
         </Map>
         <UIContainer>
-          <Button onClick={this.updateGps}>
-            <img src="/icons/gps.svg" alt=""/>
-          </Button>
           <Button onClick={this.toggleMenu}>
             <img src="/icons/list.svg" alt=""/>
           </Button>
